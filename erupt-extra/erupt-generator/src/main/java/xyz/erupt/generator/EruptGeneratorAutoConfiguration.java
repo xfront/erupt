@@ -1,8 +1,8 @@
 package xyz.erupt.generator;
 
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import xyz.erupt.core.annotation.EruptScan;
 import xyz.erupt.core.module.EruptModule;
@@ -18,7 +18,7 @@ import java.util.List;
  * @author YuePeng
  * date 2021/3/28 18:51
  */
-@Configuration
+@AutoConfiguration
 @ComponentScan
 @EntityScan
 @EruptScan

@@ -15,7 +15,7 @@ import xyz.erupt.upms.model.EruptOpenApi;
 import xyz.erupt.upms.service.EruptTokenService;
 import xyz.erupt.upms.vo.OpenApiTokenVo;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.time.LocalDateTime;
 
 /**
@@ -42,7 +42,7 @@ public class EruptOpenApiController {
      */
     @GetMapping("/create-token")
     @Transactional
-    public R<OpenApiTokenVo> createToken(@RequestParam("appid") String appid, @RequestParam("secret") String secret) {
+    public R<OpenApiTokenVo> createToken(@RequestParam String appid, @RequestParam String secret) {
         EruptOpenApi eruptOpenApi = eruptDao.lambdaQuery(EruptOpenApi.class).eq(EruptOpenApi::getAppid, appid).one();
         if (eruptOpenApi == null) throw new EruptWebApiRuntimeException("appid not found");
         if (!secret.equals(eruptOpenApi.getSecret())) throw new EruptWebApiRuntimeException("secret error");

@@ -2,10 +2,10 @@ package xyz.erupt.job;
 
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import xyz.erupt.core.annotation.EruptScan;
 import xyz.erupt.core.module.EruptModule;
@@ -19,7 +19,7 @@ import xyz.erupt.job.model.EruptMail;
 import xyz.erupt.job.service.EruptJobService;
 import xyz.erupt.jpa.dao.EruptDao;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ import java.util.List;
  * @author YuePeng
  * date 2021/3/28 18:51
  */
-@Configuration
+@AutoConfiguration
 @ComponentScan
 @EntityScan
 @EruptScan

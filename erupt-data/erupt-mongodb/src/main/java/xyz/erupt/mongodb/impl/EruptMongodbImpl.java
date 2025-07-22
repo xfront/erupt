@@ -20,7 +20,7 @@ import xyz.erupt.core.view.EruptFieldModel;
 import xyz.erupt.core.view.EruptModel;
 import xyz.erupt.core.view.Page;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.lang.reflect.Field;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -102,8 +102,8 @@ public class EruptMongodbImpl implements IEruptDataService, ApplicationRunner {
                         break;
                     case IN:
                         // 类型强制转换.
-                        if (value instanceof Collection<?>) {
-                            query.addCriteria(Criteria.where(mongoFieldName).in((Collection<?>) value));
+                        if (value instanceof Collection<?> collection) {
+                            query.addCriteria(Criteria.where(mongoFieldName).in(collection));
                         } else {
                             query.addCriteria(Criteria.where(mongoFieldName).in(value));
                         }

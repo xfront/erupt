@@ -1,7 +1,7 @@
 package xyz.erupt.magicapi;
 
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.ssssssss.magicapi.core.interceptor.Authorization;
 import xyz.erupt.core.annotation.EruptScan;
 import xyz.erupt.core.constant.MenuTypeEnum;
@@ -22,7 +22,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author YuePeng
  * date 2021/3/28 18:51
  */
-@Configuration
+@AutoConfiguration
 @ComponentScan
 @EruptScan
 public class EruptMagicApiAutoConfiguration implements EruptModule {

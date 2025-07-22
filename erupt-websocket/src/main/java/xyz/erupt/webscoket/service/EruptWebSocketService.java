@@ -9,8 +9,8 @@ import xyz.erupt.webscoket.channel.EruptChannelManager;
 import xyz.erupt.webscoket.channel.SocketCommand;
 import xyz.erupt.webscoket.model.EruptWsSessionModel;
 
-import javax.annotation.Resource;
-import javax.websocket.Session;
+import jakarta.annotation.Resource;
+import jakarta.websocket.Session;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +53,7 @@ public class EruptWebSocketService {
     }
 
     public void sendJsNotify(String title, String message) {
-        this.send(SocketCommand.JS, String.format("window.notify.info('%s', '%s')", title, message));
+        this.send(SocketCommand.JS, "window.notify.info('%s', '%s')".formatted(title, message));
     }
 
 }

@@ -27,8 +27,8 @@ import xyz.erupt.core.view.EruptApiModel;
 import xyz.erupt.core.view.EruptModel;
 
 import javax.imageio.ImageIO;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -61,7 +61,7 @@ public class EruptFileController {
     @SneakyThrows
     @PostMapping("/upload/{erupt}/{field}")
     @EruptRouter(authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
-    public EruptApiModel upload(@PathVariable("erupt") String eruptName, @PathVariable("field") String fieldName, @RequestParam("file") MultipartFile file) {
+    public EruptApiModel upload(@PathVariable("erupt") String eruptName, @PathVariable("field") String fieldName, @RequestParam MultipartFile file) {
         // Generating storage paths
         EruptModel eruptModel = EruptCoreService.getErupt(eruptName);
         Erupts.powerLegal(eruptModel, powerObject -> powerObject.isEdit() || powerObject.isAdd());
@@ -95,10 +95,10 @@ public class EruptFileController {
                         int width = bufferedImage.getWidth();
                         int height = bufferedImage.getHeight();
                         if (imageType.minWidth() > width || imageType.maxWidth() < width) {
-                            return EruptApiModel.errorApi(I18nTranslate.$translate("erupt.upload_error.image_width") + String.format("[%s,%s]", imageType.minWidth(), imageType.maxWidth()));
+                            return EruptApiModel.errorApi(I18nTranslate.$translate("erupt.upload_error.image_width") + "[%s,%s]".formatted(imageType.minWidth(), imageType.maxWidth()));
                         }
                         if (imageType.minHeight() > height || imageType.maxHeight() < height) {
-                            return EruptApiModel.errorApi(I18nTranslate.$translate("erupt.upload_error.image_height") + String.format("[%s,%s]", imageType.minWidth(), imageType.maxWidth()));
+                            return EruptApiModel.errorApi(I18nTranslate.$translate("erupt.upload_error.image_height") + "[%s,%s]".formatted(imageType.minWidth(), imageType.maxWidth()));
                         }
                         break;
                     case BASE:
@@ -159,8 +159,8 @@ public class EruptFileController {
     @EruptRouter(authIndex = 2, verifyMethod = EruptRouter.VerifyMethod.PARAM, verifyType = EruptRouter.VerifyType.ERUPT)
     public void uploadUEditorImage(@PathVariable("erupt") String eruptName,
                                    @PathVariable("field") String fieldName,
-                                   @RequestParam(value = "callback", required = false) String callback,
-                                   @RequestParam(value = "file", required = false) MultipartFile file,
+                                   @RequestParam(required = false) String callback,
+                                   @RequestParam(required = false) MultipartFile file,
                                    HttpServletResponse response) throws IOException, ClassNotFoundException {
         if (null == file) {
             @Cleanup InputStream stream = EruptFileController.class.getClassLoader().getResourceAsStream("ueditor.json");

@@ -83,8 +83,8 @@ public class ReflectUtil {
     public static List<String> getFieldGenericName(Field field) {
         List<String> names = new ArrayList<>();
         Type gType = field.getGenericType();
-        if (gType instanceof ParameterizedType) {
-            Type[] typeArguments = ((ParameterizedType) gType).getActualTypeArguments();
+        if (gType instanceof ParameterizedType type) {
+            Type[] typeArguments = type.getActualTypeArguments();
             for (Type typeArgument : typeArguments) {
                 String[] gArray = typeArgument.getTypeName().split("\\.");
                 names.add(gArray[gArray.length - 1]);

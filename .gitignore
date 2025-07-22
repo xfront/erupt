@@ -20,13 +20,18 @@ HELP.md
 *.iml
 *.ipr
 
+/**/.gradle/**
+/**/build/**
+/**/.idea/**
+/**/.github/**
+/**/.gitee/**
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
+
 
 ### VS Code ###
 .vscode/

@@ -39,8 +39,8 @@ public class EruptComponentController {
     @PostMapping("/auto-complete/{erupt}/{field}")
     @EruptRouter(authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
     public List<Object> autoCompleteValue(@PathVariable("erupt") String eruptName,
-                                          @PathVariable("field") String field,
-                                          @RequestParam("val") String val,
+                                          @PathVariable String field,
+                                          @RequestParam String val,
                                           @RequestBody(required = false) Map<String, Object> formData) {
         EruptFieldModel fieldModel = EruptCoreService.getErupt(eruptName).getEruptFieldMap().get(field);
         AutoCompleteType autoCompleteType = fieldModel.getEruptField().edit().autoCompleteType();
@@ -58,7 +58,7 @@ public class EruptComponentController {
     @GetMapping("/choice-item/{erupt}/{field}")
     @EruptRouter(authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
     public List<VLModel> choiceItem(@PathVariable("erupt") String eruptName,
-                                    @PathVariable("field") String field) {
+                                    @PathVariable String field) {
         EruptModel eruptModel = EruptCoreService.getErupt(eruptName);
         EruptFieldModel fieldModel = eruptModel.getEruptFieldMap().get(field);
         return EruptUtil.getChoiceList(eruptModel, fieldModel.getEruptField().edit());
@@ -77,8 +77,8 @@ public class EruptComponentController {
     @GetMapping("/choice-trigger/{erupt}/{field}")
     @EruptRouter(authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
     public Map<String, Object> choiceTrigger(@PathVariable("erupt") String eruptName,
-                                             @PathVariable("field") String field,
-                                             @RequestParam("val") Object val) {
+                                             @PathVariable String field,
+                                             @RequestParam Object val) {
         EruptModel eruptModel = EruptCoreService.getErupt(eruptName);
         EruptFieldModel fieldModel = eruptModel.getEruptFieldMap().get(field);
         ChoiceType choiceType = fieldModel.getEruptField().edit().choiceType();
@@ -93,7 +93,7 @@ public class EruptComponentController {
     @GetMapping("/tags-item/{erupt}/{field}")
     @EruptRouter(authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
     public List<String> tagsItem(@PathVariable("erupt") String eruptName,
-                                 @PathVariable("field") String field) {
+                                 @PathVariable String field) {
         EruptFieldModel fieldModel = EruptCoreService.getErupt(eruptName).getEruptFieldMap().get(field);
         return EruptUtil.getTagList(fieldModel.getEruptField().edit().tagsType());
     }
@@ -102,7 +102,7 @@ public class EruptComponentController {
     @GetMapping("/code-edit-hints/{erupt}/{field}")
     @EruptRouter(authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
     public List<String> codeEditHints(@PathVariable("erupt") String eruptName,
-                                      @PathVariable("field") String field) {
+                                      @PathVariable String field) {
         EruptFieldModel fieldModel = EruptCoreService.getErupt(eruptName).getEruptFieldMap().get(field);
         CodeEditorType codeEditType = fieldModel.getEruptField().edit().codeEditType();
         return EruptSpringUtil.getBean(codeEditType.hint()).hint(codeEditType.hintParams());

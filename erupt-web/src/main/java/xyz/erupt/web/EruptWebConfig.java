@@ -1,11 +1,10 @@
 package xyz.erupt.web;
-
-import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
@@ -14,7 +13,7 @@ import java.nio.charset.StandardCharsets;
  * @author YuePeng
  * date 2021/3/28 18:51
  */
-@Configuration
+@AutoConfiguration
 @RestController
 public class EruptWebConfig {
 

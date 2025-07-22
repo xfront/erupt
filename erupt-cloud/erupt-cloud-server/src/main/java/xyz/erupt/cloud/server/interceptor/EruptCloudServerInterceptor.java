@@ -47,10 +47,10 @@ import xyz.erupt.upms.service.EruptContextService;
 import xyz.erupt.upms.service.EruptSessionService;
 import xyz.erupt.upms.service.EruptUserService;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.Part;
 import java.nio.charset.StandardCharsets;
 import java.util.Enumeration;
 import java.util.Map;
@@ -99,8 +99,8 @@ public class EruptCloudServerInterceptor implements WebMvcConfigurer, AsyncHandl
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         EruptRouter eruptRouter = null;
-        if (handler instanceof HandlerMethod) {
-            eruptRouter = ((HandlerMethod) handler).getMethodAnnotation(EruptRouter.class);
+        if (handler instanceof HandlerMethod method) {
+            eruptRouter = method.getMethodAnnotation(EruptRouter.class);
         }
         if (null == eruptRouter) return true;
         if (EruptRouter.VerifyType.ERUPT == eruptRouter.verifyType()) {

@@ -56,7 +56,7 @@ public class GsonFactory implements ToNumberStrategy {
         if (Math.abs(src - src.longValue()) < Math.ulp(src)) {
             return new JsonPrimitive(src.longValue());
         } else {
-            return new JsonPrimitive(String.format("%.15g", src).replaceAll("\\.?0+$", ""));
+            return new JsonPrimitive("%.15g".formatted(src).replaceAll("\\.?0+$", ""));
         }
     }
 

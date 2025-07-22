@@ -1,9 +1,9 @@
 package xyz.erupt.upms;
 
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import xyz.erupt.core.annotation.EruptScan;
 import xyz.erupt.core.constant.EruptConst;
 import xyz.erupt.core.constant.MenuStatus;
@@ -25,7 +25,7 @@ import java.util.List;
  * @author YuePeng
  * date 2021/3/28 18:51
  */
-@Configuration
+@AutoConfiguration
 @ComponentScan
 @EntityScan
 @EruptScan

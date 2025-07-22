@@ -4,7 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Type;
 import xyz.erupt.annotation.Erupt;
 import xyz.erupt.annotation.EruptField;
 import xyz.erupt.annotation.EruptI18n;
@@ -21,10 +20,10 @@ import xyz.erupt.annotation.sub_field.sub_edit.Search;
 import xyz.erupt.jpa.model.BaseModel;
 import xyz.erupt.linq.lambda.LambdaSee;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Table;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Map;
@@ -73,7 +72,6 @@ public class EruptOperateLog extends BaseModel implements DataProxy<EruptOperate
     private String apiName;
 
     @Lob
-    @Type(type = "org.hibernate.type.TextType")
     @EruptField(
             views = @View(title = "请求参数", type = ViewType.CODE),
             edit = @Edit(title = "请求参数", type = EditType.CODE_EDITOR, codeEditType = @CodeEditorType(language = "json"))

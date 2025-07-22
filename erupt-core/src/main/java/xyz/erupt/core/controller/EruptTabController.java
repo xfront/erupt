@@ -34,7 +34,7 @@ public class EruptTabController {
     //TAB组件新增行为
     @PostMapping({"/tab-add/{erupt}/{tabName}"})
     @EruptRouter(skipAuthIndex = 3, authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
-    public EruptApiModel addTabEruptData(@PathVariable("erupt") String erupt, @PathVariable("tabName") String tabName, @RequestBody JsonObject data) {
+    public EruptApiModel addTabEruptData(@PathVariable String erupt, @PathVariable String tabName, @RequestBody JsonObject data) {
         EruptModel eruptModel = getTabErupt(erupt, tabName);
         Object obj = gson.fromJson(data.toString(), eruptModel.getClazz());
         EruptApiModel eruptApiModel = this.tabValidate(eruptModel, data, dp -> {
@@ -48,7 +48,7 @@ public class EruptTabController {
     //TAB组件更新行为
     @PostMapping({"/tab-update/{erupt}/{tabName}"})
     @EruptRouter(skipAuthIndex = 3, authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
-    public EruptApiModel updateTabEruptData(@PathVariable("erupt") String erupt, @PathVariable("tabName") String tabName, @RequestBody JsonObject data) {
+    public EruptApiModel updateTabEruptData(@PathVariable String erupt, @PathVariable String tabName, @RequestBody JsonObject data) {
         EruptModel eruptModel = getTabErupt(erupt, tabName);
         Object obj = gson.fromJson(data.toString(), eruptModel.getClazz());
         EruptApiModel eruptApiModel = this.tabValidate(eruptModel, data, dp -> {
@@ -62,7 +62,7 @@ public class EruptTabController {
     //TAB组件删除行为
     @PostMapping({"/tab-delete/{erupt}/{tabName}"})
     @EruptRouter(skipAuthIndex = 3, authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
-    public EruptApiModel deleteTabEruptData(@PathVariable("erupt") String erupt, @PathVariable("tabName") String tabName, @RequestBody JsonObject data) {
+    public EruptApiModel deleteTabEruptData(@PathVariable String erupt, @PathVariable String tabName, @RequestBody JsonObject data) {
         EruptApiModel eruptApiModel = EruptApiModel.successApi();
         EruptModel eruptModel = getTabErupt(erupt, tabName);
         Object obj = gson.fromJson(data.toString(), eruptModel.getClazz());

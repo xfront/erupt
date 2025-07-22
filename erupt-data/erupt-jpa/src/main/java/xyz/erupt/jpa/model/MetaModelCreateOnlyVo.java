@@ -1,5 +1,6 @@
 package xyz.erupt.jpa.model;
 
+import jakarta.persistence.MappedSuperclass;
 import lombok.Getter;
 import lombok.Setter;
 import xyz.erupt.annotation.EruptField;
@@ -11,7 +12,6 @@ import xyz.erupt.annotation.sub_field.View;
 import xyz.erupt.annotation.sub_field.sub_edit.DateType;
 import xyz.erupt.core.context.MetaContext;
 
-import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
 /**

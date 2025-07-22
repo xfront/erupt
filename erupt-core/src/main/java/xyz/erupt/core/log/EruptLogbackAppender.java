@@ -42,8 +42,8 @@ public class EruptLogbackAppender implements EruptAppender {
                     .name(event.getLoggerName())
                     .value(" : ")
                     .value(event.getFormattedMessage());
-            if (proxy instanceof ThrowableProxy) {
-                formatter.throwable(((ThrowableProxy) proxy).getThrowable());
+            if (proxy instanceof ThrowableProxy throwableProxy) {
+                formatter.throwable(throwableProxy.getThrowable());
             }
             EruptLogManager.log(formatter.toString());
         }

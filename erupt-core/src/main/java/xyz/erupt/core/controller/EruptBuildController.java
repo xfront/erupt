@@ -70,7 +70,7 @@ public class EruptBuildController {
 
     @GetMapping("/{erupt}/{field}")
     @EruptRouter(authIndex = 1, verifyType = EruptRouter.VerifyType.ERUPT)
-    public EruptBuildModel getEruptBuildByField(@PathVariable("erupt") String eruptName, @PathVariable("field") String field) {
+    public EruptBuildModel getEruptBuildByField(@PathVariable("erupt") String eruptName, @PathVariable String field) {
         return this.getEruptBuild(EruptCoreService.getEruptView(eruptName).getEruptFieldMap().get(field).getFieldReturnName());
     }
 

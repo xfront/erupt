@@ -14,7 +14,7 @@ import lombok.Setter;
 public class Column {
 
     private String value;
-
+    @Builder.Default
     private int colspan = 1;
 
     private String className;

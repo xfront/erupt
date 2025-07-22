@@ -11,9 +11,9 @@ import xyz.erupt.upms.constant.SessionKey;
 import xyz.erupt.upms.service.EruptSessionService;
 import xyz.erupt.upms.service.EruptUserService;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
@@ -32,8 +32,7 @@ public class EruptSuperInterceptor implements AsyncHandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws IOException {
-        if (handler instanceof HandlerMethod) {
-            HandlerMethod handlerMethod = (HandlerMethod) handler;
+        if (handler instanceof HandlerMethod handlerMethod) {
             EruptLoginAuth eruptAuth = handlerMethod.getMethodAnnotation(EruptLoginAuth.class);
             EruptMenuAuth eruptMenuAuth = handlerMethod.getMethodAnnotation(EruptMenuAuth.class);
             if (null != eruptAuth || null != eruptMenuAuth) {

@@ -13,7 +13,7 @@ import xyz.erupt.jpa.dao.EruptDao;
 import xyz.erupt.linq.lambda.LambdaSee;
 import xyz.erupt.tpl.engine.EngineConst;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -64,14 +64,14 @@ public class CloudNodeProcess implements DataProxy<CloudNode>, TagsFetchHandler,
             try {
                 MetaNode metaNode = nodeManager.getNode(map.get(nodeNameField).toString());
                 Optional.ofNullable(nodeManager.getNode(map.get(nodeNameField).toString())).ifPresent(metaNode1 -> {
-                    Function<Collection<String>, Object> function = (it) -> null == it ? 0 : String.format("<a href='javascript:alert(`%s`);'>%d</a>", String.join("\\u000a", it), it.size());
+                    Function<Collection<String>, Object> function = (it) -> null == it ? 0 : "<a href='javascript:alert(`%s`);'>%d</a>".formatted(String.join("\\u000a", it), it.size());
                     map.put(LambdaSee.field(CloudNode::getEruptNum), function.apply(metaNode.getErupts()));
                     map.put(LambdaSee.field(CloudNode::getInstanceNum), metaNode.getLocations().size());
                     map.put(LambdaSee.field(CloudNode::getEruptModuleNum), function.apply(metaNode.getEruptModules()));
                     map.put(LambdaSee.field(CloudNode::getVersion), metaNode.getVersion());
                 });
             } catch (Exception e) {
-                map.put(LambdaSee.field(CloudNode::getVersion), String.format("<span style='color:#f00'>%s</span>", e.getMessage()));
+                map.put(LambdaSee.field(CloudNode::getVersion), "<span style='color:#f00'>%s</span>".formatted(e.getMessage()));
                 log.warn("node warn → " + map.get(nodeNameField), e);
             }
         }

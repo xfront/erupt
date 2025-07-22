@@ -25,7 +25,7 @@ public class EruptTableStyle {
     }
 
     public static void cellColor(Map<String, Object> row, String field, String color) {
-        Optional.ofNullable(row.get(field)).ifPresent(it -> row.put(field, String.format("<span style='color:%s'>%s<span>", color, it)));
+        Optional.ofNullable(row.get(field)).ifPresent(it -> row.put(field, "<span style='color:%s'>%s<span>".formatted(color, it)));
     }
 
 

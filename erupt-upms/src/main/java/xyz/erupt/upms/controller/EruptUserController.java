@@ -29,8 +29,8 @@ import xyz.erupt.upms.service.EruptUserService;
 import xyz.erupt.upms.vo.EruptMenuVo;
 import xyz.erupt.upms.vo.EruptUserinfoVo;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -123,7 +123,7 @@ public class EruptUserController {
      */
     @GetMapping(value = "/change-pwd")
     @EruptRouter(verifyType = EruptRouter.VerifyType.LOGIN)
-    public EruptApiModel changePwd(@RequestParam("pwd") String pwd, @RequestParam("newPwd") String newPwd, @RequestParam("newPwd2") String newPwd2) {
+    public EruptApiModel changePwd(@RequestParam String pwd, @RequestParam String newPwd, @RequestParam String newPwd2) {
         pwd = SecretUtil.decodeSecret(pwd, 3);
         newPwd = SecretUtil.decodeSecret(newPwd, 3);
         newPwd2 = SecretUtil.decodeSecret(newPwd2, 3);

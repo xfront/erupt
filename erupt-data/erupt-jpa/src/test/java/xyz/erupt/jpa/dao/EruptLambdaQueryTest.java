@@ -1,11 +1,11 @@
 package xyz.erupt.jpa.dao;
 
+import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Test;
 import xyz.erupt.jpa.ApplicationTests;
 import xyz.erupt.jpa.entity.Class;
 import xyz.erupt.jpa.entity.Student;
 
-import javax.annotation.Resource;
 
 public class EruptLambdaQueryTest extends ApplicationTests {
 

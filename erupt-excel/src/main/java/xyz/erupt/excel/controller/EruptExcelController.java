@@ -31,9 +31,9 @@ import xyz.erupt.core.view.TableQuery;
 import xyz.erupt.excel.service.EruptExcelService;
 import xyz.erupt.excel.util.ExcelUtil;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.transaction.Transactional;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.transaction.Transactional;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -100,7 +100,7 @@ public class EruptExcelController {
     @EruptRecordOperate(value = "Import Excel", dynamicConfig = EruptRecordNaming.class)
     @EruptRouter(authIndex = 2, verifyType = EruptRouter.VerifyType.ERUPT)
     @Transactional
-    public EruptApiModel importExcel(@PathVariable("erupt") String eruptName, @RequestParam("file") MultipartFile file) {
+    public EruptApiModel importExcel(@PathVariable("erupt") String eruptName, @RequestParam MultipartFile file) {
         EruptModel eruptModel = EruptCoreService.getErupt(eruptName);
         Erupts.powerLegal(eruptModel, PowerObject::isImportable, "Not import permission");
         if (file.isEmpty() || null == file.getOriginalFilename()) return EruptApiModel.errorApi("No file");

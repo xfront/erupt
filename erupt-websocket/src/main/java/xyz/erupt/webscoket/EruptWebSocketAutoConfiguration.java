@@ -1,9 +1,8 @@
 package xyz.erupt.webscoket;
-
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 import xyz.erupt.core.module.EruptModule;
@@ -11,14 +10,14 @@ import xyz.erupt.core.module.EruptModuleInvoke;
 import xyz.erupt.core.module.ModuleInfo;
 import xyz.erupt.upms.prop.EruptAppProp;
 
-import javax.annotation.PostConstruct;
-import javax.annotation.Resource;
+import jakarta.annotation.PostConstruct;
+import jakarta.annotation.Resource;
 
 /**
  * @author YuePeng
  * date 2021/3/28 18:51
  */
-@Configuration
+@AutoConfiguration
 @ComponentScan
 @EnableWebSocket
 @EnableConfigurationProperties

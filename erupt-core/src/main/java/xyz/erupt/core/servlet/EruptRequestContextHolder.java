@@ -10,8 +10,8 @@ public interface EruptRequestContextHolder {
 
 	default <R> R convert(Function<ServletRequestAttributes, R> function){
 		RequestAttributes requestAttributes = RequestContextHolder.getRequestAttributes();
-		if (requestAttributes instanceof ServletRequestAttributes) {
-			ServletRequestAttributes servletRequestAttributes = ((ServletRequestAttributes) requestAttributes);
+		if (requestAttributes instanceof ServletRequestAttributes attributes) {
+			ServletRequestAttributes servletRequestAttributes = attributes;
 			return function.apply(servletRequestAttributes);
 		}
 		return null;

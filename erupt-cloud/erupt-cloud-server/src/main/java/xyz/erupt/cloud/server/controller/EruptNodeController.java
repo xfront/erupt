@@ -18,8 +18,8 @@ import xyz.erupt.core.log.LogMessage;
 import xyz.erupt.upms.annotation.EruptMenuAuth;
 import xyz.erupt.upms.service.EruptContextService;
 
-import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.annotation.Resource;
+import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -39,7 +39,7 @@ public class EruptNodeController {
     //移除实例
     @GetMapping("/remove-instance/{nodeName}")
     @EruptMenuAuth(CloudServerConst.CLOUD_NODE_MANAGER_PERMISSION)
-    public void removeInstance(@PathVariable String nodeName, @RequestParam("instance") String instance) {
+    public void removeInstance(@PathVariable String nodeName, @RequestParam String instance) {
         nodeManager.removeNodeInstance(nodeName, instance);
     }
 

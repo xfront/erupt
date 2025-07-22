@@ -1,9 +1,9 @@
 package xyz.erupt.cloud.server;
 
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import xyz.erupt.cloud.server.base.CloudServerConst;
 import xyz.erupt.cloud.server.model.CloudNode;
 import xyz.erupt.cloud.server.model.CloudNodeGroup;
@@ -21,7 +21,7 @@ import java.util.List;
  * @author YuePeng
  * date 2021/12/16 00:15
  */
-@Configuration
+@AutoConfiguration
 @ComponentScan
 @EruptScan
 @EntityScan

@@ -3,8 +3,8 @@ package xyz.erupt.generator.base;
 import lombok.Getter;
 import xyz.erupt.annotation.sub_field.EditType;
 
-import javax.persistence.Lob;
-import javax.persistence.Transient;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Transient;
 import java.util.Date;
 import java.util.Set;
 
@@ -41,8 +41,9 @@ public enum GeneratorType {
     @Ref COMBINE(EditType.COMBINE, "一对一新增", null, null) {
         @Override
         public String annotation(String thisErupt, String linkErupt) {
-            return "@OneToOne(cascade = CascadeType.ALL)\n" +
-                    "        @JoinColumn";
+            return """
+                    @OneToOne(cascade = CascadeType.ALL)
+                            @JoinColumn""";
         }
 
         @Override
@@ -53,8 +54,9 @@ public enum GeneratorType {
     @Ref REFERENCE_TREE(EditType.REFERENCE_TREE, "树引用", null, "referenceTreeType = @ReferenceTreeType(id = \"id\", label = \"name\")") {
         @Override
         public String annotation(String thisErupt, String linkErupt) {
-            return "@ManyToOne\n" +
-                    "        @JoinColumn";
+            return """
+                    @ManyToOne
+                            @JoinColumn""";
         }
 
         @Override

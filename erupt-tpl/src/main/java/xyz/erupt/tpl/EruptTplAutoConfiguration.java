@@ -1,8 +1,7 @@
 package xyz.erupt.tpl;
-
+import org.springframework.boot.autoconfigure.AutoConfiguration;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 import xyz.erupt.annotation.fun.VLModel;
 import xyz.erupt.core.constant.MenuTypeEnum;
@@ -11,13 +10,13 @@ import xyz.erupt.core.module.EruptModuleInvoke;
 import xyz.erupt.core.module.ModuleInfo;
 import xyz.erupt.tpl.service.EruptTplService;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 /**
  * @author YuePeng
  * date 2021/3/28 18:51
  */
-@Configuration
+@AutoConfiguration
 @ComponentScan
 @Component
 @EnableConfigurationProperties

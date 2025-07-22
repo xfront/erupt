@@ -14,8 +14,8 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <erupt.groupId>xyz.erupt</erupt.groupId>
-        <java.version>1.8</java.version>
-        <spring.boot.version>2.7.18</spring.boot.version>
+        <java.version>17</java.version>
+        <spring.boot.version>3.4.1</spring.boot.version>
     </properties>
 
     <!--
@@ -83,11 +83,6 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 
     <build>
@@ -95,10 +90,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
+                <version>3.13.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
                     <encoding>utf-8</encoding>
                     <verbose>true</verbose>
                     <fork>true</fork>
@@ -106,6 +99,7 @@
                         <compilerArg>-parameters</compilerArg>
                     </compilerArgs>
                     <!--<executable>/Library/Java/JavaVirtualMachines/jdk1.8.0_231.jdk/Contents/Home/bin/javac</executable>-->
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
             <!-- 一键更新子模块版本号 plugins -> versions -> version:set  -->
@@ -161,9 +155,9 @@
             <id>release</id>
             <dependencies>
                 <dependency>
-                    <groupId>javax.interceptor</groupId>
-                    <artifactId>javax.interceptor-api</artifactId>
-                    <version>1.2</version>
+                    <groupId>jakarta.interceptor</groupId>
+                    <artifactId>jakarta.interceptor-api</artifactId>
+                    <version>2.2.0</version>
                 </dependency>
             </dependencies>
             <build>
